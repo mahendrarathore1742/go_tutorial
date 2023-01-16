@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 )
 
-
 func PerformGetReqest(){
 
 	const url  = "http://localhost:3000/";
