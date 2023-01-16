@@ -11,8 +11,8 @@ func myDefer(){
 	}
 
 } 
-
-
+ 
+ 
 func main() {
 
 	// defer fmt.Println("4")
