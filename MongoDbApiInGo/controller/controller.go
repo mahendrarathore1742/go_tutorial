@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-const connection = "mongodb+srv://msr:msr12345@@cluster0.f5zbcgu.mongodb.net/?retryWrites=true&w=majority"
+const connection = "Your Link"
 const DbName = "Netflix"
 
 const colName = "watchlist"
