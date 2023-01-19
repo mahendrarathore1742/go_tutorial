@@ -1,46 +1,44 @@
-package main;
+package main
 
-import ("fmt"
-		"encoding/json"
-);
-
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // Varibale name should be Uppercase;
-type courses struct{
-	Course string 	`json:"coursesname"`
-	Price int
-	Platform string `json:"website"`
-	Password string `json:"_"`
-	Tags []string 	`json:"tags,omitempty"`
+type courses struct {
+	Course   string `json:"coursesname"`
+	Price    int
+	Platform string   `json:"website"`
+	Password string   `json:"_"`
+	Tags     []string `json:"tags,omitempty"`
 }
 
-func main(){
+func main() {
 	fmt.Println("Welcome to Json data")
-	Decodejson();
+	Decodejson()
 }
 
-func Encoding(){
+func Encoding() {
 
 	LearnCode := []courses{
 
-		{"python",1500,"google.com","msr12345",[]string{"py","python"}},
-		{"java",1500,"google.com","msr12345",[]string{"java","java"}},
-		{"Javascript",1500,"google.com","msr12345",nil},
-
+		{"python", 1500, "google.com", "msr12345", []string{"py", "python"}},
+		{"java", 1500, "google.com", "msr12345", []string{"java", "java"}},
+		{"Javascript", 1500, "google.com", "msr12345", nil},
 	}
 
 	//package this data as Json
-	finalJson,err := json.MarshalIndent(LearnCode,"","\t");
+	finalJson, err := json.MarshalIndent(LearnCode, "", "\t")
 
-	if err !=nil{
+	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("%s\n",finalJson)
+	fmt.Printf("%s\n", finalJson)
 }
 
-
-func Decodejson(){
+func Decodejson() {
 
 	jsonDataFromWeb := []byte(`
 	{
@@ -52,35 +50,31 @@ func Decodejson(){
 	}
 		`)
 
-		// var LearnCourse courses
+	// var LearnCourse courses
 
-		// checkValie := json.Valid(jsonDataFromWeb)
+	// checkValie := json.Valid(jsonDataFromWeb)
 
-		// if checkValie {
+	// if checkValie {
 
-		// 	fmt.Println("Json was valid");
-		// 	json.Unmarshal(jsonDataFromWeb,&LearnCourse);
-		// 	fmt.Printf("%#v\n",LearnCourse)
+	// 	fmt.Println("Json was valid");
+	// 	json.Unmarshal(jsonDataFromWeb,&LearnCourse);
+	// 	fmt.Printf("%#v\n",LearnCourse)
 
-		// } else {
-		// 	fmt.Println("Json is not valie")
-		// }
+	// } else {
+	// 	fmt.Println("Json is not valie")
+	// }
 
+	// alternative way
 
+	var myOnlineData map[string]interface{}
 
+	json.Unmarshal(jsonDataFromWeb, &myOnlineData)
+	// fmt.Printf("%#v\n",myOnlineData)
 
-		// alternative way
+	for key, value := range myOnlineData {
 
-		var myOnlineData map[string]interface{};
+		fmt.Printf("Key is %v and value is  %v and type is %T\n ", key, value, value)
 
-		json.Unmarshal(jsonDataFromWeb,&myOnlineData);
-		// fmt.Printf("%#v\n",myOnlineData)
-
-
-		for key,value := range myOnlineData{
-
-			fmt.Printf("Key is %v and value is  %v and type is %T\n ",key,value,value)
-
-		}
+	}
 
 }
